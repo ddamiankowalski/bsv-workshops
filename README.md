@@ -1,6 +1,10 @@
 # bsv-workshops
 Documentation for BSV workshops in Poznań 2024
 
+
+Link to the event: https://app.evenea.pl/event/884187-7/
+
+
 Each block is structured as follows(in order):
 - theoretical introduction with a presentation
 - exercise
