@@ -1,11 +1,13 @@
 # bsv-workshops
 Documentation for BSV workshops in Poznań 2024
 
+# Wokshops quick links:
 
-Link to the event: https://app.evenea.pl/event/884187-7/
+- Link to the event: https://app.evenea.pl/event/884187-7/
+- Workshops will take place here: https://maps.app.goo.gl/A4BeM8mgNPCGCShi6
+- BSV documentation: https://docs.bsvblockchain.org/
 
-Workshops will take place here: https://maps.app.goo.gl/A4BeM8mgNPCGCShi6
-
+# Workshops program: 
 
 Each block is structured as follows(in order):
 - theoretical introduction with a presentation
@@ -14,7 +16,7 @@ Each block is structured as follows(in order):
 - comparing the results of the exercise
 - Q&A after the practical session
 
-DAY 1
+## DAY 1
 
 1. Blockchain theory(3h)
     - theory content
@@ -39,7 +41,7 @@ DAY 1
      - create a transaction from scratch with the usage of UTXOs, broadcasting the created transaction, monitoring the transaction until mined
    - Q&A after exercise
 
-DAY 2
+## DAY 2
 
 3. Transaction with data(1h)
    - theory content
