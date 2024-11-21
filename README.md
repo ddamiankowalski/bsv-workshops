@@ -1,11 +1,11 @@
-# bsv-workshops
-Documentation for BSV workshops in Poznań 2024
+# BSV Blockchain workshops for Developers
+### 1st edition in Poznań 7-8.12.2024
 
 # Wokshops quick links:
 
 - Link to the event: https://app.evenea.pl/event/884187-7/
-- Workshops will take place here: https://maps.app.goo.gl/A4BeM8mgNPCGCShi6
-- BSV documentation: https://docs.bsvblockchain.org/
+- BSV Blockchain workshops for developers will take place here: https://maps.app.goo.gl/A4BeM8mgNPCGCShi6
+- BSV Blockchain documentation: https://docs.bsvblockchain.org/
 
 # Workshops program: 
 
