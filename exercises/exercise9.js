@@ -1,13 +1,16 @@
 const { P2PKH, PrivateKey, Transaction } = require('@bsv/sdk');
-const { OpReturnTemplate } = require('./templates');
+const { OpReturnTemplate, MathPuzzleTemplate } = require('./templates');
 
 /*
-   Using first unspent output from the transaction from the previous exercise,
-    - create a new transaction with one input and one output
-    - input should be the first unspent output from the previous transaction
-    - output should be a OP_RETURN output with the message "Hello, world!"
-    - sign the transaction and print it in hex format
+  Create a new transaction based on one of the UTXOs from the previous exercise
+  - add an output with a locking script with math puzzle
+     - to spend this output, you need to provide two numbers that add up to 8.
+  - sign the transaction and print it in hex format
+
+  - additionally, create a next transaction that spends the output from the previous transaction
+  - in the unlocking script, two numbers should be provided that sum up to 8
  */
+
 
 (async () => {
 
@@ -20,22 +23,43 @@ const { OpReturnTemplate } = require('./templates');
   const newTx = new Transaction();
   newTx.addInput({
     sourceTransaction: parentTx,
-    sourceOutputIndex: 0,
+    sourceOutputIndex: 1,
     unlockingScriptTemplate: new P2PKH().unlock(privateKey),
   });
 
-  const script = new OpReturnTemplate().lock('Hello, world!', 'utf8');
+  const script = new MathPuzzleTemplate().lock();
 
   newTx.addOutput({
-    satoshis: 0,
+    satoshis: 1,
     lockingScript: script,
   });
 
   await newTx.sign();
 
-  console.log('Fee', newTx.getFee());
+  console.log('newTx Fee', newTx.getFee());
 
-  console.log('new transaction ID:', newTx.id('hex'));
-  console.log('new transaction', newTx.toHex());
+  console.log('newTx transaction ID:', newTx.id('hex'));
+  console.log('newTx transaction', newTx.toHex());
+
+  // Transaction spending that custom UTXO
+
+  const nextTx = new Transaction();
+  nextTx.addInput({
+    sourceTransaction: newTx,
+    sourceOutputIndex: 0,
+    unlockingScriptTemplate: new MathPuzzleTemplate().unlock(),
+  });
+
+  nextTx.addOutput({
+    satoshis: 0,
+    lockingScript: new OpReturnTemplate().lock('Hey!', 'utf8'),
+  });
+
+  await nextTx.sign();
+
+  console.log('nextTx Fee', nextTx.getFee());
+
+  console.log('nextTx transaction ID:', nextTx.id('hex'));
+  console.log('nextTx transaction', nextTx.toHex());
 })();
 
