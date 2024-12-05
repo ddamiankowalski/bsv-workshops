@@ -3,17 +3,14 @@ const { Script, OP, LockingScript, UnlockingScript, Utils } = require('@bsv/sdk'
 class MathPuzzleTemplate {
   lock() {
     const s = new Script();
-    s.writeOpCode(OP.OP_ADD);
-    s.writeNumber(8);
-    s.writeOpCode(OP.OP_EQUAL);
+    // Your code here
 
     return new LockingScript(s.chunks);
   }
 
   unlock() {
     const s = new Script();
-    s.writeNumber(3);
-    s.writeNumber(5);
+    // Your code here
 
     return {
       sign: (tx, inputIndex) => new Promise((resolve) => {

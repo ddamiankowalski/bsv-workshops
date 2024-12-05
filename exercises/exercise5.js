@@ -1,4 +1,4 @@
-const { P2PKH } = require('@bsv/sdk');
+const { } = require('@bsv/sdk');
 
 /*
   Generate locking script for a P2PKH address
@@ -7,7 +7,7 @@ const { P2PKH } = require('@bsv/sdk');
   - remember the index of that output for the next exercise (as UTXO index)
  */
 
-const address = "1PMT41sRmmVtC19AB4J7saeVCfATuAovnW"
+const address = "put_your_address_here"
 
-const lockingScript = new P2PKH().lock(address).toASM()
+const lockingScript = "" // <- TODO: update this line
 console.log("Locking script: ", lockingScript)
