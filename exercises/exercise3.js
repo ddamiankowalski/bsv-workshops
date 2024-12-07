@@ -1,4 +1,4 @@
-const { } = require('@bsv/sdk');
+const { PrivateKey, PublicKey, Signature } = require('@bsv/sdk');
 
 /*
     Sign a message with a private key and
@@ -7,8 +7,8 @@ const { } = require('@bsv/sdk');
     - verify the signature for a malformed message
  */
 
-const yourWIF = "put_your_wif_here";
-const yourPublicKey = "put_your_public_key_here";
+const yourWIF = "L5eCkNhCUD57P4uMHbtTvCkQ7TxiYDEghZ6wRVYnNQGdbVz4E2U3";
+const yourPublicKey = "03752669a71d34c89e47cdeafe9d3cb5edec8e5a4d855ee487a7a0a6d266bde976";
 
 const messageToSign = "Hello, World!";
 const malformedMessage = messageToSign + "some extra data";
@@ -25,10 +25,14 @@ console.log("Verified by public key (malformed message): ", verifiedByPublicKeyM
 
 function exercise() {
   // Your code here
+  const privKey = PrivateKey.fromWif(yourWIF);
+  const signature = privKey.sign(messageToSign);
+
+  const pubKey = PublicKey.fromString(yourPublicKey);
 
   return {
-    signatureBase64: "",
-    verifiedByPublicKey: false,
-    verifiedByPublicKeyMalformed: false
+    signatureBase64: signature.toString('base64'),
+    verifiedByPublicKey: pubKey.verify(messageToSign, signature),
+    verifiedByPublicKeyMalformed: pubKey.verify(malformedMessage, signature)
   }
 }
