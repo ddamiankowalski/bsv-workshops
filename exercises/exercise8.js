@@ -38,6 +38,8 @@ const { OpReturnTemplate } = require('./templates'); // Use the template for OP_
     await tx.fee(new SatoshisPerKilobyte(1));
     await tx.sign();
 
+    console.log(tx)
+
     console.log(`Fee: ${tx.getFee()}\nSatoshis: ${output.satoshis}\nNew tx: ${tx.toHex()}`);
 })();
 
